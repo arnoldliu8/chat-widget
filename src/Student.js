@@ -254,14 +254,26 @@ LMSmessages=[
 
             <div style={{height:"305px",width:"240px",margin:"0px",overflow:"auto"}}>
 
-           { this.state.messages.map((person,i) => <p key={i} style={{backgroundColor:" #FFEBCD",marginLeft:"20px",marginRight:"50px",
+           { this.state.messages.map((person,i) => <p key={i} style={{
+           backgroundColor:" #FFEBCD",
+           marginLeft:"20px",
+           marginRight:"50px",
            marginBottom:"1px",
-            borderRadius:"5px 5px 5px 0px"}}>{person.text}  <span style={{fontSize:"10px"
+           borderRadius:"5px 5px 5px 0px",
+           padding:"10px"}}>{person.text}  <span style={{fontSize:"10px"
           }}>{person.time}</span></p>)}
-            < div style={{width:"25px",height:"25px",marginTop:"0px",borderRadius:"50%",backgroundColor:"blue"}}></div>
-           { this.state.SendMessages.map((person,i) => <p key={i} style={{backgroundColor:"blue",marginLeft:"50px",marginRight:"20px",
-           marginBottom:"1px",
-            borderRadius:"5px 5px 0px 5px", color:"white"}}>{person.text} <span style={{fontSize:"10px"
+            < div style={{
+          width:"25px",
+          height:"25px",marginTop:"0px",borderRadius:"50%",backgroundColor:"blue"}}></div>
+           { this.state.SendMessages.map((person,i) => <p key={i} style={{
+           	backgroundColor:"blue",
+           	marginLeft:"50px",
+           	marginRight:"20px",
+            marginBottom:"1px",
+            borderRadius:"5px 5px 0px 5px", 
+            color:"white",
+            padding:"10px"
+          }}>{person.text} <span style={{fontSize:"10px"
           }}>{person.time}</span></p>)}
           
 
