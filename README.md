@@ -13,7 +13,7 @@ clicking on the name of any student will open their chat window.
 ![alt tag](second.png)
 
 
-the back button will you back to the "students" page.
+the back button will take you back to the "students" page.
 
 
 
