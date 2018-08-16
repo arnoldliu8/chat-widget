@@ -69,7 +69,8 @@ LMSmessages=[
    mode:'students',
    messages:[],
    SendMessages:[],
-   name:''
+   name:'',
+   users:this.users
   } 
   }
 
