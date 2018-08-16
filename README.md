@@ -10,7 +10,7 @@ clicking on "Chemistry" will display the list of students.
 clicking on the name of any student will open their chat window.
 
 
-![alt tag](second.png)
+![alt tag](third.png)
 
 
 clicking on orange circle having the initials written on it , will take you back to the "students" page.
