@@ -4,9 +4,13 @@ import React from "react";
 
 
 class Student extends React.Component{
-users=[{name:"Arnold Liu",initials:"AL"},{name:"Harry Ally",initials:"HA"},{name:"Leo Messi",initials:"LM"}];
-  
-ALmessages = [
+users=[{name:"Arnold Liu",initials:"AL",color:'#E74C3C'},
+{name:"Harry Ally",initials:"HA",color:'#298089'},
+{name:"Leo Messi",initials:"LM",color:'#009D4B'}] 
+
+
+
+ALmessages= [
   {text: 'Whatever the mind of man can conceive and believe, it can achieve.',
   time:'11:56'},
   {text: 'conceive and believe',
@@ -71,26 +75,28 @@ LMSmessages=[
 
 
 
-  onStudent1=()=>{
+  onStudent=(value)=>{
+  	if(value === 'AL'){
   	this.setState({mode:'Msg'})
     this.setState({messages:this.ALmessages})
     this.setState({SendMessages:this.ALSmessages}) 
-    	this.setState({name:'Arnold'})
-  }
-  onStudent2=()=>{
+    	this.setState({initials:'AL'})
+    }
+    else if(value === 'HA'){
   	this.setState({mode:'Msg'})
-    this.setState({SendMessages:this.HAmessages})
-    this.setState({SendMessages:this.HASmessages})
-    	this.setState({name:'Harry'})
-  }
-  onStudent3=()=>{
-    this.setState({mode:'Msg'})
+    this.setState({messages:this.HAmessages})
+    this.setState({SendMessages:this.HASmessages}) 
+    	this.setState({initials:'HA'})
+    }
+    else if(value === 'LM'){
+  	this.setState({mode:'Msg'})
     this.setState({messages:this.LMmessages})
-    this.setState({SendMessages:this.LMSmessages})
-    	this.setState({name:'Leo'})
+    this.setState({SendMessages:this.LMSmessages}) 
+    	this.setState({initials:'LM'})
+    }
   }
 
-  onBack=()=>{
+  onClear=()=>{
   	this.setState({mode:"students"})
   }
 
@@ -100,211 +106,502 @@ LMSmessages=[
     	if(this.state.mode==="students")
         return (
         	<div>
-            <br/>
-            <br/>
-            <br/>
-            <div style={{height:"380px", width:"240px", border:"solid", borderColor:"#45CFE2", marginLeft:"50px"}}>
-            <div style={{width:"240px", backgroundColor:"#45CFE2",
-            margin: "auto",
-            textAlign:"center", color:"white"}}> 
 
+            <div style={{
+            	height:"424px",
+            	width:"304px", 
+            	border:"solid", 
+            	borderColor:"#45CFE2",              
+              backgroundColor:"#F1F1F1",
+              position:"fixed",
+              left:"87px",
+              top:"168px"
+            }}>
 
-
-
-            <p style={{margin:"auto",height:"46px"}}><br/>STUDENTS</p>
-            <div style={{margin:"0px", backgroundColor:"#45CFE2",
-            width:"240px",
-             float:"left"}}>
-            <button
-            style=
-            {{backgroundColor:"#D2B4DE", 
-            margin:"0px",
-            height:"28px", 
-            width:"34px",
-            borderRadius:"50%",
-            border:"solid",
-            borderColor:"#D2B4DE",
-            color:"white",
-            marginBottom:"5px"}}>AL</button><button
-            onClick={this.onStudent1}
-            style={{
-            margin:"0px",
-            width:"200px", 
-            color:"white",
-            backgroundColor:"#45CFE2",
-            border:"solid",
-            borderColor:"#45CFE2",
-            textAlign:"left"}}>Arnold Liu</button>
-            
-
-            <button
-            style=
-            {{backgroundColor:"#F5B7B1", 
-            margin:"0px",
-            height:"28px", 
-            width:"34px",
-            borderRadius:"50%",
-            border:"solid",
-            borderColor:"#F5B7B1",
-            color:"white",
-            marginBottom:"5px"
-            }}>HA</button><button 
-            onClick={this.onStudent2}
-            style={{
-            margin:"0px",
-            width:"200px", 
-            color:"white",
-            backgroundColor:"#45CFE2",
-            border:"solid",
-            borderColor:"#45CFE2",
-            textAlign:"left"}}>Harry Ally</button>
-
-
-
-
-            <button
-            style=
-            {{backgroundColor:"#EDBB99", 
-            margin:"0px",
-            height:"28px", 
-            width:"34px",
-            borderRadius:"50%",
-            border:"solid",
-            borderColor:"#EDBB99",
-            color:"white",
-            marginBottom:"5px"
-            }}>LM</button><button 
-            onClick={this.onStudent3}
-            style={{
-            
-            margin:"0px",
-            width:"200px", 
-            color:"white",
-            backgroundColor:"#45CFE2",
-            border:"solid",
-            borderColor:"#45CFE2",
-            textAlign:"left"}}>Leo Messi</button>
-
-
-
+            <div style={{
+                height:"42px",
+            	  width:"304px",
+                backgroundColor:"#45CFE2",
+                position:"fixed",
+                left:"90px",
+                top:"170px"
+            }}>
+            <div style={{
+                height:"87px",
+            	  width:"19px",
+                position:"fixed",
+                left:"200px",
+                top:"178px",
+                color:"#FFFFFF",
+                textAlign:"left",
+                fontSize:"16px",
+                lineHeight:"19px",
+                fontStyle:"Montserrat, SemiBold",
+            }}>STUDENTS</div>
             </div>
-            
-            </div> 
-            </div> 
+
+            <div style={{
+            	position:"fixed",
+                left:"90px",
+                top:"212px",
+                backgroundColor:"#45CFE2",    
+            }}>
+
+            {this.state.users.map((person,i) => <div key={i} style={{
+            	height:"42px",
+            	width:"304px",
+                backgroundColor:"#45CFE2",             
+                marginBottom:"20px"
+            }}><div style={{
+                height:"40px",
+            	width:"40px",
+                backgroundColor:person.color,
+                fontStyle:"Montserrat, SemiBold",
+                borderRadius:"50px",
+                marginLeft:"30px",
+            }}>
+            <div style={{
+                color:"white",
+                textAlign:"center",
+                fontSize:"16px",
+                fontStyle:"Proxima Nova, Semibold",
+                margin: "auto",
+                width: "50%",
+                padding: "10px",
+            }}>{person.initials}</div>
             </div>
-            
+            <div onClick={()=>this.onStudent(person.initials)} 
+                style={{
+                color:"white",
+                fontSize:"16px",
+                fontStyle:"Proxima Nova, Semibold",
+                marginLeft: "90px",
+                height: "20px",
+                lineHeight:"20px",
+                marginTop:"-30px"
+            }}>
+            {person.name}
+            </div>
+            <div style={{
+                
+            	backgroundColor:"white",
+                float: "right",
+                height: "32px",
+                width:"32px",
+                borderRadius:"50%",
+                marginTop:"-26px",
+                marginRight:"30px"
 
-
-
-
+            }}>
+           
+            <i style={{
+            	fontSize:"16px",              
+            	color:"#45CFE2",
+              textAlign:"center",
+              padding:"9px"
+            }} className="fa">&#xf095;</i>
+           
+            </div>
+            </div>)}
+            </div>
+            </div>
+            </div>
         	 );
     
-
 
     else if(this.state.mode==="Msg"){
     	return(
     		   <div>
-          <div>
-            <br/>
-            <br/>
-            <br/>
+    		   <div onClick={this.onClear} 
+            style=
+            {{
+            borderRadius:"50%", 
+            height:"50px",
+            width:"50px", 
+            backgroundColor:"#F7931E",
+            position:"fixed",
+            left:"31px",
+            top:"565px"
+            }}><div 
+            style={{
+            height:"24px",
+            width:"25px", 
+            backgroundColor:"#F7931E",
+            position:"fixed",
+            left:"42px",
+            top:"578px",
+            lineHeight:"24px",
+            fontSize:"20px",
+            textAlign:"left",
+            color:"white"
+
+            }}>{this.state.initials}</div>
+            </div>
             <div style=
             {{
-              height:"380px", 
-              width:"240px", 
-              border:"solid", 
-              borderColor:"#45CFE2", 
-              marginLeft:"50px"}}>
-            <div style=
-            {{
-              height:"46px",
-              width:"240px", 
-              backgroundColor:"#45CFE2",
-              margin: "auto",
-              textAlign:"center", color:"white"}}>  
-            
-            <div style=
-            {{
-              
-            position:"absolute",
-            float:"center",  
-            color:"white",fontSize:"15px"
+                height:"424px", 
+                width:"304px", 
+                backgroundColor:"#45CFE2",
+                position:"fixed",
+                left:"87px",
+                top:"168px",
+                borderStyle:"solid",
+                borderColor:"#45CFE2",
+                borderSize:"2px",
             }}>
 
-            <pre>
-            <button onClick={this.onBack} style={{backgroundColor:"#45CFE2",
-            float:"left",color:"white", borderColor:"white", borderRadius:"50%",
-            borderStyle:"solid"}}>&#8592;</button> {this.state.name}
-            </pre>
-            </div>
-
+            <div style=
+            {{
+                height:"42px",
+                width:"300px",
+                backgroundColor:"#45CFE2",
+                position:"fixed",
+                left:"89px",
+                top:"170px"
+            }}> 
             
+            <div style=
+            {{
+            borderRadius:"50%",  
+            height:"23px",
+            width:"23px",  
+            backgroundColor:"#298089", 
+            position:"fixed",
+            left:"139px",
+            top:"177px"
+            }}><div style=
+            {{ 
+            height:"12px",
+            width:"14px",  
+            position:"fixed",
+            left:"142.17px",
+            top:"183.47px",
+            color:"#FFFFFF",
+            fontSize:"10.16px",
+            fontStyle:"Proxima Nova, Semibold",
+            textAlign:"left",
+            lineHeight:"12px"
+            }}></div></div>
 
+            <div style=
+            {{
+            borderRadius:"50%",  
+            height:"23px",
+            width:"23px",  
+            backgroundColor:"#A967AA", 
+            position:"fixed",
+            left:"128px",
+            top:"177px"
+            }}><div style=
+            {{ 
+            height:"12px",
+            width:"14px",  
+            position:"fixed",
+            left:"132.17px",
+            top:"183.47px",
+            color:"#FFFFFF",
+            fontSize:"10.16px",
+            fontStyle:"Proxima Nova, Semibold",
+            textAlign:"left",
+            lineHeight:"12px"
+            }}></div></div>
+
+            <div style=
+            {{
+            borderRadius:"50%",  
+            height:"23px",
+            width:"23px",  
+            backgroundColor:"#A967AA", 
+            position:"fixed",
+            left:"117px",
+            top:"177px"
+            }}><div style=
+            {{ 
+            height:"12px",
+            width:"14px",  
+            position:"fixed",
+            left:"122.17px",
+            top:"183.47px",
+            color:"#FFFFFF",
+            fontSize:"10.16px",
+            fontStyle:"Proxima Nova, Semibold",
+            textAlign:"left",
+            lineHeight:"12px"
+            }}></div></div>
+
+            <div style=
+            {{
+            borderRadius:"50%",  
+            height:"23px",
+            width:"23px",  
+            backgroundColor:"#F7931E", 
+            position:"fixed",
+            left:"106px",
+            top:"177px"
+            }}><div style=
+            {{ 
+            height:"12px",
+            width:"14px",  
+            position:"fixed",
+            left:"111.17px",
+            top:"183.47px",
+            color:"#FFFFFF",
+            fontSize:"10.16px",
+            fontStyle:"Proxima Nova, Semibold",
+            textAlign:"left",
+            lineHeight:"12px"
+            }}></div></div>
             
-           
-            </div>
+           <div style=
+            {{
+            borderRadius:"50%",  
+            height:"23px",
+            width:"23px",  
+            backgroundColor:"#CE242B", 
+            position:"fixed",
+            left:"96px",
+            top:"177px"
+            }}><div style=
+            {{ 
+            height:"12px",
+            width:"14px",  
+            position:"fixed",
+            left:"100.17px",
+            top:"183.47px",
+            color:"#FFFFFF",
+            fontSize:"10.16px",
+            fontStyle:"Proxima Nova, Semibold",
+            textAlign:"left",
+            lineHeight:"12px"
+            }}></div></div>
+
+          <div style=
+            {{
+                width:"12px",
+                height:"20px",
+                textAlign:"left",
+                fontSize:"16px",
+                lineHeight:"20px",
+                color:"#FFFFFF",
+                position:"fixed",
+                left:"165.67px",
+                top:"184.33px"
+            }}>...</div>
+
+            <div            
+            style=
+            {{
+                width:"84px",
+                height:"19px",
+                textAlign:"left",
+                fontSize:"16px",
+                lineHeight:"18px",
+                color:"#FFFFFF",
+                position:"fixed",
+                left:"210px",
+                top:"181px"
+            }}>Chemistry</div>
+
+            <div style=
+            {{
+                width:"6px",
+                height:"6px",
+                borderRadius:"50%",
+                backgroundColor:"#7AC943",
+                position:"fixed",
+                backgroundSize:"0.5px",
+                left:"109.5px",
+                top:"196.5px"
+            }}></div>
+            <div style=
+            {{
+                width:"6px",
+                height:"6px",
+                borderRadius:"50%",
+                backgroundColor:"#7AC943",
+                position:"fixed",
+                backgroundSize:"0.5px",
+                left:"121.5px",
+                top:"196.5px"
+            }}></div>
+            <div style=
+            {{
+                width:"6px",
+                height:"6px",
+                borderRadius:"50%",
+                backgroundColor:"#7AC943",
+                position:"fixed",
+                backgroundSize:"0.5px",
+                left:"133.5px",
+                top:"196.5px"
+            }}></div>
+            <div style=
+            {{
+                width:"6px",
+                height:"6px",
+                borderRadius:"50%",
+                backgroundColor:"#7AC943",
+                position:"fixed",
+                backgroundSize:"0.5px",
+                left:"144.5px",
+                top:"196.5px"
+            }}></div>
+            <div style=
+            {{
+                width:"6px",
+                height:"6px",
+                borderRadius:"50%",
+                backgroundColor:"#7AC943",
+                position:"fixed",
+                backgroundSize:"0.5px",
+                left:"155.5px",
+                top:"196.5px"
+            }}></div>
             
-
-
-
-
-
-            <div style={{height:"334px",width:"240px",margin:"0px"}}>
+            </div>   
             
-
-            <div style={{height:"305px",width:"240px",margin:"0px",overflow:"auto"}}>
+            <div style={{
+                height:"382px",
+                width:"302px",
+                position:"fixed",
+              
+                left:"90.5px",
+                top:"212px",
+                backgroundColor:"#F1F1F1"}}>
+            
+           <div style={{
+           	height:"325px",
+           	width:"302px",
+           	overflow:"auto"}}>
 
            { this.state.messages.map((person,i) => <p key={i} style={{
-           backgroundColor:" #FFEBCD",
-           marginLeft:"20px",
-           marginRight:"50px",
-           marginBottom:"1px",
-           borderRadius:"5px 5px 5px 0px",
-           padding:"10px"}}>{person.text}  <span style={{fontSize:"10px"
+           	backgroundColor:"#FFFFFF",
+           	marginLeft:"34px",
+           	marginRight:"50px",
+            borderRadius:"13px 13px 13px 2px",
+            padding:"10px",
+            lineHeight:"15px",
+            fontSize:"12px",
+            fontStyle:"Montserrat, Regular",
+            textAlign:"left",
+            color:"#4D4D4D"
+          }}>{person.text}  <br/><span style={{
+          	fontSize:"6px",
+          	textAlign:"left",
+          	fontStyle:"Montserrat, Medium",
+          	height:"20px",
+           	width:"6px",
+           	textAlign:"left",
+           	color:"rgba(153,153,153,0.6)",
+           	float:"right",
+           	marginRight:"10px",
+           	lineHeight:"8px"
           }}>{person.time}</span></p>)}
-            < div style={{
-          width:"25px",
-          height:"25px",marginTop:"0px",borderRadius:"50%",backgroundColor:"blue"}}></div>
+                < div style={{
+            	width:"30px",
+            	height:"30px",
+            	marginLeft:"2px",
+            	marginTop:"-42px",
+            	borderRadius:"50%",
+            	backgroundColor:"#4A90E2"}}></div>
+          
+            
            { this.state.SendMessages.map((person,i) => <p key={i} style={{
-           	backgroundColor:"blue",
+           	backgroundColor:"#2196F3",
            	marginLeft:"50px",
            	marginRight:"20px",
             marginBottom:"1px",
-            borderRadius:"5px 5px 0px 5px", 
+            borderRadius:"13px 13px 2px 13px", 
             color:"white",
-            padding:"10px"
-          }}>{person.text} <span style={{fontSize:"10px"
+            padding:"10px",
+            lineHeight:"15px",
+            fontSize:"12px",
+            fontStyle:"Montserrat, Regular",
+            textAlign:"left",
+          }}>{person.text} <br/><span style={{
+          	fontSize:"6px",
+          	textAlign:"left",
+          	fontStyle:"Montserrat, Medium",
+          	height:"20px",
+           	width:"6px",
+           	textAlign:"left",
+           	color:"rgba(245,244,253,0.6)",
+           	float:"right",
+           	marginRight:"10px",
+           	lineHeight:"8px"
           }}>{person.time}</span></p>)}
-          
-
-
            </div>
-
- 
-           
-       
-            <input style={{marginLeft:"10px"}}type="text" placeholder="Type your message"/>
-            <button style={{fontSize:"12px",
-            backgroundColor:"#F5F5F5",
-            borderStyle:"solid", 
-            borderColor:"#F5F5F5"}}><i className="fa fa-paperclip"></i></button>
-            <button style={{fontSize:"12px",backgroundColor:"#45CFE2", borderRadius:"50px",
-            borderStyle:"solid", borderColor:"#F5F5F5"}}>
-            <i className="fa fa-paper-plane-o"></i></button>
+            <div style={{
+                width:"241px",
+                height:"36px",
+                position:"fixed",
+                left:"96px",
+                top:"545px",
+                backgroundColor:"#FFFFFF",
+                borderRadius:"19.5px 19.5px 19.5px 19.5px",
+                boxShadow: "0px 2px 2.5px #CBCBCB"
+                }}>
+            <input style=
+            {{
+                width:"175px",
+                height:"15px",
+                position:"fixed",
+                left:"114px",
+                top:"554px",
+                color:"#CCCCCC",
+                fontSize:"12px",
+                lineHeight:"15px",
+                textAlign:"left",
+                fontStyle:"Montserrat, Light",
+                borderColor:"white",
+                borderStyle:"solid"
+            
+            }}            
+            type="text" 
+            placeholder="Type your message"/>
+            <div style=
+            {{
+                width:"11px",
+                height:"22px",
+                position:"fixed",
+                left:"302.65px",
+                top:"552.66px",
+                color:"#999999",
+                fontSize:"20px"
+            }}><i className="fa fa-paperclip"></i></div>
 
             </div>
+                        
+            <div style=
+            {{
+                width:"36px",
+                height:"36px",
+                position:"fixed",
+                left:"347px",
+                top:"546px",
+                backgroundColor:"#45CFE2",
+                borderRadius:"50%"
+                
+            }}><div style=
+            {{
+                width:"15.57px",
+                height:"14.14px",
+                position:"fixed",
+                left:"354px",
+                top:"555.43px",
+                color:"white",
+                fontSize:"20px"
 
+            }}>
+            <i className="fa fa-paper-plane-o"></i>
             </div>
             </div>
-          </div>
+            </div>
+            </div>
+            </div>
     )
     }
-
-
-
-   
     }
-
 }
 
 export default Student;
