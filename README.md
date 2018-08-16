@@ -1,10 +1,10 @@
-![alt tag](zero.png)
+![alt tag](first.png)
 
 
 clicking on "Chemistry" will display the list of students.
 
 
-![alt tag](first.png)
+![alt tag](second.png)
 
 
 clicking on the name of any student will open their chat window.
@@ -13,7 +13,7 @@ clicking on the name of any student will open their chat window.
 ![alt tag](second.png)
 
 
-the back button will take you back to the "students" page.
+clicking on orange circle having the initials written on it , will take you back to the "students" page.
 
 
 
