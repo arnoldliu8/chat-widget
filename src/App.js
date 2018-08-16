@@ -25,9 +25,17 @@ class App extends Component {
     if(this.state.mode==="view"){
     return (
       <div>
-      <button onClick={this.onEvent1} style={{borderRadius:"50%", borderColor:"orange",float:"left", height:"40px",
-       width:"40px", backgroundColor:"orange"
-       ,position:"absolute",left:"5px",marginTop:"420px",color:"white",borderStyle:"solid"}}></button>     
+      <div onClick={this.onEvent1} 
+      style=
+      {{
+      borderRadius:"50%", 
+      height:"50px",
+      width:"50px", 
+      backgroundColor:"#F7931E",
+      position:"fixed",
+      left:"31px",
+      top:"565px"
+      }}></div>  
       </div>
     );
   }
@@ -35,9 +43,17 @@ class App extends Component {
   else if(this.state.mode==="chemistry"){
     return(
       <div>
-    <button onClick={this.onClear} style={{borderRadius:"50%", borderColor:"orange",float:"left", height:"40px",
-    width:"40px", backgroundColor:"orange"
-    ,position:"absolute",left:"5px",marginTop:"420px",color:"white",borderStyle:"solid"}}></button>
+    <div onClick={this.onClear} 
+    style=
+    {{
+      borderRadius:"50%", 
+      height:"50px",
+      width:"50px", 
+      backgroundColor:"#F7931E",
+      position:"fixed",
+      left:"31px",
+      top:"565px"
+    }}></div>
     <Chat />
     </div>
     );
